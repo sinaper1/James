@@ -9,14 +9,9 @@ export const routes= [
         component: './Home',
     },
     {
-        name: '权限演示',
-        path: '/access',
-        component: './Access',
-    },
-    {
-        name: ' CRUD 示例',
-        path: '/table',
-        component: './Table',
+        name: '数据统计',
+        path: '/statistics',
+        component: './Statistics',
     },
     {
         name: '詹皇传奇',

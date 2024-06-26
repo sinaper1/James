@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import { PageContainer, ProCard } from '@ant-design/pro-components';
+import { PageContainer } from '@ant-design/pro-components';
 import { Col, Row, Spin } from 'antd';
-import './index.less';
 import {getHomeList} from "@/services/v1/HomeController";
+import './index.less';
 
 const HomePage: React.FC = () => {
     const [loading, setLoading] = useState(false);
@@ -29,7 +29,7 @@ const HomePage: React.FC = () => {
                                 <figure className={'home-avatar-right-logo'}>
                                     <div className={'home-avatar-right-logo-ratio'}/>
                                     <div className={'home-avatar-right-logo-image'}>
-                                        <img src={dataSource?.logo} alt={'logo'}/>
+                                        <img src={dataSource?.lakes} alt={'logo'}/>
                                     </div>
                                 </figure>
                                 <div className={'home-avatar-right-logo'}/>
@@ -50,7 +50,7 @@ const HomePage: React.FC = () => {
                             <h1>{dataSource?.name}</h1>
                             <h1>{dataSource?.eName}</h1>
                             <div className={'home-intro-detail'}>
-                                <img src={dataSource?.logo} alt={'logo'}  className={'home-intro-detail-logo'}/>
+                                <img src={dataSource?.lakes} alt={'logo'}  className={'home-intro-detail-logo'}/>
                                 <span>{dataSource?.team}</span>
                                 <span>
                                 -
@@ -102,7 +102,10 @@ const HomePage: React.FC = () => {
                         dataSource?.careerHistory?.map((item)=>(
                             <>
                                 <Col xs={12} sm={6} md={6} lg={4} xl={4}><span>{item?.year}</span></Col>
-                                <Col xs={12} sm={6} md={6} lg={8} xl={8}><span>{item?.team}</span></Col>
+                                <Col xs={12} sm={6} md={6} lg={8} xl={8}>
+                                    <img src={item?.logo} alt={'logo'}  className={'home-intro-detail-logo'}/>
+                                    <span>{item?.team}</span>
+                                </Col>
                             </>
                         ))
                     }
@@ -110,19 +113,21 @@ const HomePage: React.FC = () => {
                 <Row>
                     <Col span={24}><div className={'home-title'}>职业生涯荣誉</div></Col>
                 </Row>
-                {/*<Row gutter={[0, 8]}>*/}
-                {/*    <ProCard*/}
-                {/*        title="小尺寸卡片"*/}
-                {/*        extra="extra"*/}
-                {/*        tooltip="这是提示"*/}
-                {/*        style={{ maxWidth: 300, marginBlockStart: 24 }}*/}
-                {/*        size="small"*/}
-                {/*    >*/}
-                {/*        <div>Card content</div>*/}
-                {/*        <div>Card content</div>*/}
-                {/*        <div>Card content</div>*/}
-                {/*    </ProCard>*/}
-                {/*</Row>*/}
+                <Row gutter={[0, 10]}>
+                    {
+                        dataSource?.careerHonors?.map((item, index)=>(
+                            <Col xs={24} sm={12} md={12} lg={8} xl={8} key={index}>
+                                <div className={'home-honors'}>
+                                    <img src={item?.logo} alt={'logo'}  className={'home-honors-logo'}/>
+                                    <div className={'home-honors-detail'}>
+                                        <span>{`${item?.year?.length}×${item?.name}`}</span>
+                                        <span className={'home-honors-detail-year'}>{item?.year?.join('、')}</span>
+                                    </div>
+                                </div>
+                            </Col>
+                        ))
+                    }
+                </Row>
             </div>
         </Spin>
     </PageContainer>

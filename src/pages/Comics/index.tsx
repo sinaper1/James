@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import { PageContainer } from '@ant-design/pro-components';
 import {Select, Image, Affix, Spin} from 'antd';
 import './index.less';
-import {getImageList} from "src/services/v1/ComicsController";
+import {getImageList} from "@/services/v1/ComicsController";
 
 const HomePage: React.FC = () => {
     const [selectValue, setSelectValue] = useState<number>();

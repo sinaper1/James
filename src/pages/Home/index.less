@@ -2,6 +2,7 @@
   height: calc(100vh - 108px);
   width: 100%;
   overflow-y: auto;
+  padding-bottom: 10px;
   //background: #FFFFFF;
   &-intro{
     padding-left: 10px;
@@ -19,6 +20,7 @@
     color: #FFFFFF;
     border: 2.5px solid #FDB927;
     margin: 10px 0;
+    padding: 10px 0;
   }
 
   &-avatar{
@@ -126,6 +128,25 @@
         position: absolute;
         top: 0;
         z-index: 400;
+      }
+    }
+  }
+  &-honors{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    &-logo{
+      width: 25px;
+      height: 25px;
+      padding-right: 5px;
+    }
+    &-detail{
+      display: flex;
+      flex-direction: column;
+      &-year{
+        color: #a5a6a7;
+        font-weight: 400;
+        font-size: 12px;
       }
     }
   }

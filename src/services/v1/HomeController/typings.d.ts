@@ -2,10 +2,15 @@ declare namespace API {
     interface careerHistoryItem {
         year: string;
         team: string;
+        logo: string;
+    }
+    interface careerHonorsItem {
+        year: string[];
+        name: string;
+        logo: string;
     }
     interface dataItem {
         id: number;
-        logo: string;
         avatar: string;
         name: string;
         eName: string;
@@ -21,6 +26,15 @@ declare namespace API {
         draft: string;
         career: string;
         careerHistory: careerHistoryItem[];
+        careerHonors: careerHonorsItem[];
+        lakes: string;
+        // heat: string;
+        // cleveland: string;
+        mvp: string;
+        amvp: string;
+        fmvp: string;
+        bestRookie: string;
+        champion: string;
     }
     interface HomeResponse {
         success?: boolean;
