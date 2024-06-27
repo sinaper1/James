@@ -14,6 +14,11 @@ export const routes= [
         component: './Statistics',
     },
     {
+        name: '生涯得分记录',
+        path: '/score/record',
+        component: './ScoreRecord',
+    },
+    {
         name: '詹皇传奇',
         path: '/comics',
         component: './Comics',

@@ -1,9 +1,9 @@
 import { request } from '@umijs/max';
 
-export async function getHomeList(
+export async function getScoreRecordList(
     options?: { [key: string]: any },
 ) {
-    return request<API.HomeResponse>('/api/v1/getHomeList', {
+    return request<API.ScoreRecordResponse>('/api/v1/getScoreRecordList', {
         method: 'GET',
         ...(options || {}),
     });
