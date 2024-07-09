@@ -83,7 +83,7 @@ const StatisticsPage: React.FC = () => {
       <Spin spinning={state.loading}>
         <div className={'statistics'}>
           <ProCard
-            title="数据总览"
+            title="数据总览(数据统计时间：2024/7/10)"
             bordered
             extra={
               <Affix offsetTop={isPad() ? 60 : 20} key={'select'}>
