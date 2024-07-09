@@ -1,25 +1,9 @@
+import { getImageList } from '@/services/v1/ComicsController';
 import { isPad } from '@/utils/application';
 import { PageContainer } from '@ant-design/pro-components';
 import { Affix, Image, Select, Spin } from 'antd';
 import React, { useEffect, useState } from 'react';
-// import {getImageList} from "@/services/v1/ComicsController";
 import './index.less';
-
-const ImageArr = [
-  { id: 1, number: 8 },
-  { id: 2, number: 8 },
-  { id: 3, number: 8 },
-  { id: 4, number: 8 },
-  { id: 5, number: 8 },
-  { id: 6, number: 8 },
-  { id: 7, number: 8 },
-  { id: 8, number: 9 },
-  { id: 9, number: 7 },
-  { id: 10, number: 7 },
-  { id: 11, number: 9 },
-  { id: 12, number: 5 },
-  { id: 13, number: 3 },
-];
 
 const HomePage: React.FC = () => {
   const [selectValue, setSelectValue] = useState<number>();
@@ -28,23 +12,11 @@ const HomePage: React.FC = () => {
   const onChange = async (value: number) => {
     setLoading(true);
     setSelectValue(value);
-    const arr: string[] = [];
-    ImageArr.forEach((item) => {
-      if (value && item.id === Number(value)) {
-        for (let i = 0; i <= item.number; i++) {
-          arr.push(
-            `http://static.kinglebronjames.club/static/james/image/caricature/Image/${value}th/${value}-${i}.jpg`,
-          );
-        }
-      }
-    });
-    window.scrollTo(0, 0);
-    setImageArr(arr);
-    // const {success, data} = await getImageList({id: value});
-    // if(success && data?.list?.length){
-    //     window.scrollTo(0, 0);
-    //     setImageArr(data.list);
-    // }
+    const { status, data } = await getImageList({ id: value });
+    if (status && data?.length) {
+      window.scrollTo(0, 0);
+      setImageArr(data);
+    }
     setLoading(false);
   };
   useEffect(() => {

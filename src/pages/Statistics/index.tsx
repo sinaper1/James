@@ -1,8 +1,5 @@
 import EChart from '@/components/EChart';
-import {
-  getStatisticsList,
-  getTotalList,
-} from '@/services/v1/StatisticsController';
+import { getStatisticsList } from '@/services/v1/StatisticsController';
 import { isPad } from '@/utils/application';
 import { PageContainer, ProCard } from '@ant-design/pro-components';
 import { Affix, Select, Spin } from 'antd';
@@ -44,24 +41,15 @@ const StatisticsPage: React.FC = () => {
       ...prevState,
       loading: true,
     }));
-    const { data, success } = await getTotalList({
+    const { data, status } = await getStatisticsList({
+      type: state.type,
       seasonType: state.seasonType,
     });
-    if (success) {
+    if (status && data) {
       setState((prevState) => ({
         ...prevState,
-        totalData: data,
-      }));
-    }
-    const { data: statisticsData, success: statisticsSuccess } =
-      await getStatisticsList({
-        type: state.type,
-        seasonType: state.seasonType,
-      });
-    if (statisticsData && statisticsSuccess) {
-      setState((prevState) => ({
-        ...prevState,
-        statisticsData: statisticsData,
+        statisticsData: data.data,
+        totalData: data.totalData,
       }));
     }
     setState((prevState) => ({
@@ -71,7 +59,6 @@ const StatisticsPage: React.FC = () => {
   };
   const updateWidth = () => {
     if (divRef.current) {
-      console.log(divRef.current.offsetWidth, '---width---');
       setState((prevState) => ({
         ...prevState,
         width: divRef.current ? divRef.current.offsetWidth : 0,

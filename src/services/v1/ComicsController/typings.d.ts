@@ -1,11 +1,8 @@
 declare namespace API {
-    interface ImageResponse {
-        success?: boolean;
-        errorMessage?: string;
-        data?: ImageArr;
-    }
-
-    interface ImageArr {
-        list?: string[];
-    }
+  interface ImageResponse {
+    status?: boolean;
+    msg?: string;
+    data?: string[];
+    code: number;
+  }
 }
