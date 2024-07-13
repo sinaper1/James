@@ -13,7 +13,7 @@ import React from 'react';
 export const layout = () => {
   return {
     title: '个人生活感悟-詹姆斯',
-    logo: 'http://static.kinglebronjames.club/static/james/image/background/avatar.jpg',
+    logo: 'https://static.kinglebronjames.club/static/james/image/background/avatar.jpg',
     menu: {
       locale: false,
     },

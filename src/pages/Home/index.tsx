@@ -19,7 +19,7 @@ const HomePage: React.FC = () => {
     getDataList();
   }, []);
   return (
-    <PageContainer ghost>
+    <PageContainer>
       <Spin spinning={loading}>
         <div className={'home'}>
           <Row>

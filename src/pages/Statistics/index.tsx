@@ -66,7 +66,6 @@ const StatisticsPage: React.FC = () => {
     }
   };
   useEffect(() => {
-    getDataList();
     updateWidth(); // Initial width
     window.addEventListener('resize', updateWidth);
 
@@ -76,10 +75,12 @@ const StatisticsPage: React.FC = () => {
     };
   }, []);
   useEffect(() => {
-    getDataList();
+    if (state.type && state.seasonType) {
+      getDataList();
+    }
   }, [state.type, state.seasonType]);
   return (
-    <PageContainer ghost>
+    <PageContainer>
       <Spin spinning={state.loading}>
         <div className={'statistics'}>
           <ProCard

@@ -27,7 +27,7 @@ const ScoreRecordPage: React.FC = () => {
     },
   ];
   return (
-    <PageContainer ghost>
+    <PageContainer>
       <ProTable<API.ScoreRecordItem>
         columns={columns}
         actionRef={actionRef}
